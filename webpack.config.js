@@ -96,7 +96,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       hash: true,
-      template: './src/index.html',
+      template: './src/index.ejs',
     }),
   ],
   devServer: {
