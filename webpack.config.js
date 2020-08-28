@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+const reactVersion = require('react').version;
+const reactDOMVersion = require('react-dom').version;
+
 module.exports = {
   entry: './src/index.js',
   module: {
@@ -97,6 +100,24 @@ module.exports = {
     new HtmlWebpackPlugin({
       hash: true,
       template: './src/index.ejs',
+      cdn: {
+        use: 'unpkg',
+        unpkg: {
+          react: `https://unpkg.com/react@${reactVersion}/umd/react.development.js`,
+          reactDOM: `https://unpkg.com/react-dom@${reactDOMVersion}/umd/react-dom.development.js`,
+          domain: '//unpkg.com/',
+        },
+        cdnjs: {
+          react: `https://cdnjs.cloudflare.com/ajax/libs/react/${reactVersion}/umd/react.development.js`,
+          reactDOM: `https://cdnjs.cloudflare.com/ajax/libs/react-dom/${reactDOMVersion}/umd/react-dom.development.min.js`,
+          domain: '//cdnjs.cloudflare.com/',
+        },
+        jsdelivr: {
+          react: `https://cdn.jsdelivr.net/npm/react@${reactVersion}/umd/react.development.js`,
+          reactDOM: `https://cdn.jsdelivr.net/npm/react-dom@${reactDOMVersion}/umd/react-dom.development.js`,
+          domain: '//cdn.jsdelivr.net/',
+        },
+      },
     }),
   ],
   devServer: {

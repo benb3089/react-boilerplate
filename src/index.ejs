@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+  <% const useCdn = htmlWebpackPlugin.options.cdn.use; %>
+  <% const cdnDomain = htmlWebpackPlugin.options.cdn[useCdn].domain; %>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>React Boilerplate</title>
+    <% if (cdnDomain !== '') { %>
+      <link rel="preconnect" href="<%= cdnDomain %>" crossorigin>
+      <link rel="dns-prefetch" href="<%= cdnDomain %>" >
+    <% } %>
   </head>
   <body>
     <div id="root"></div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@16/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
-    ></script>
+    <% const react = htmlWebpackPlugin.options.cdn[useCdn].react; %>
+    <% const reactDOM = htmlWebpackPlugin.options.cdn[useCdn].reactDOM; %>
+    <script crossorigin src="<%= react %>"></script>
+    <script crossorigin src="<%= reactDOM %>"></script>
   </body>
 </html>
