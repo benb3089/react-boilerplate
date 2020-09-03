@@ -91,7 +91,7 @@ module.exports = (env) => {
       extensions: ['*', '.js', '.jsx', '.css', '.scss', '.sass'],
     },
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist'),
       filename: '[name].[hash].bundle.js',
     },
     externals: {
