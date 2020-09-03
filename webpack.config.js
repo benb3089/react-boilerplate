@@ -88,7 +88,7 @@ module.exports = (env) => {
       ],
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx', '.scss'],
+      extensions: ['*', '.js', '.jsx', '.css', '.scss', '.sass'],
     },
     output: {
       path: path.join(__dirname, 'dist'),
