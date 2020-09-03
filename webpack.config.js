@@ -6,6 +6,7 @@ const reactDOMVersion = require('react-dom').version;
 
 module.exports = (env) => {
   const isDevelopment = env.NODE_ENV === 'development';
+  process.env.BROWSERSLIST_ENV = env.NODE_ENV;
 
   return {
     ...(isDevelopment ? { devtool: 'eval-source-map' } : {}),
