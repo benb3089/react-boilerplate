@@ -8,6 +8,7 @@ module.exports = (env) => {
   const isDevelopment = env.NODE_ENV === 'development';
 
   return {
+    ...(isDevelopment ? { devtool: 'eval-source-map' } : {}),
     entry: './src/index.js',
     module: {
       rules: [
