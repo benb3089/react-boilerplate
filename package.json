@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --env.NODE_ENV=development --mode=development",
-    "build": "webpack --env.NODE_ENV=production --mode=production",
+    "start": "webpack serve --env dev --mode=development",
+    "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -28,8 +28,8 @@
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {

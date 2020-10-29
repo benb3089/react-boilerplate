@@ -1,16 +1,16 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const reactVersion = require('react').version;
 const reactDOMVersion = require('react-dom').version;
 
 module.exports = (env) => {
-  const isDevelopment = env.NODE_ENV === 'development';
-  process.env.BROWSERSLIST_ENV = env.NODE_ENV;
+  const isDevelopment = env && env.dev;
+  process.env.BROWSERSLIST_ENV = isDevelopment ? 'development' : 'production';
 
   return {
     ...(isDevelopment ? { devtool: 'eval-source-map' } : {}),
-    entry: './src/index.js',
+    // entry: './src/index.js',
+    target: isDevelopment ? 'web' : 'browserslist',
     module: {
       rules: [
         {
@@ -92,7 +92,7 @@ module.exports = (env) => {
       extensions: ['*', '.js', '.jsx', '.css', '.scss', '.sass'],
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      // path: path.resolve(__dirname, 'dist'),
       filename: '[name].[hash].bundle.js',
     },
     externals: {
@@ -125,6 +125,7 @@ module.exports = (env) => {
     ],
     devServer: {
       contentBase: './dist',
+      hot: true,
     },
   };
 };
