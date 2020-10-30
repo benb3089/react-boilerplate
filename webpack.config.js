@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const reactVersion = require('react').version;
 const reactDOMVersion = require('react-dom').version;
@@ -82,6 +83,17 @@ module.exports = (env) => {
               loader: 'url-loader',
               options: {
                 limit: 8192,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.svg$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                generator: (content) => svgToMiniDataURI(content.toString()),
               },
             },
           ],
