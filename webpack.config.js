@@ -1,8 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const svgToMiniDataURI = require('mini-svg-data-uri');
 
-const reactVersion = require('react').version;
-const reactDOMVersion = require('react-dom').version;
+const reactVersion = '18.0.0';
+const reactDOMVersion = '18.0.0';
 
 module.exports = (env) => {
   const isDevelopment = env && env.dev;
@@ -136,7 +136,6 @@ module.exports = (env) => {
       }),
     ],
     devServer: {
-      contentBase: './dist',
       hot: true,
     },
   };
